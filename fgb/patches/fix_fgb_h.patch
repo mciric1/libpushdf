@@ -1,0 +1,29 @@
+diff --git a/local/include/call_fgb.h b/local/include/call_fgb.h
+index e730b3b..277d0ec 100755
+--- a/local/include/call_fgb.h
++++ b/local/include/call_fgb.h
+@@ -84,7 +84,7 @@ int FGb_verb_info=0;
+ extern int FGb_verb_info;
+ #endif /*  LIBMODE EQ 2 */
+ #ifndef CALL_FGB_DO_NOT_DEFINE
+-FILE* log_output;
++extern FILE* log_output;
+ void info_Maple(const char* s)
+ {
+   if (FGb_verb_info)
+@@ -106,6 +106,7 @@ void FGb_error_Maple(const char* s)
+   FGb_int_error_Maple(s);
+ }
+ 
++#if LIBMODE EQ 2
+ void init_FGb_Integers()
+ {
+   FGB(init_urgent)(4,2,"DRLDRL",100000,0); /* Do not change the following parameters
+@@ -116,6 +117,7 @@ void init_FGb_Integers()
+   FGB(init)(1,1,0,log_output);/* do not change */
+   FGB(reset_coeffs)(1); /* We compute in Q[x1,x2,x3,x4,x5,x6] */
+ }
++#endif /* LIBMODE EQ 2 */
+ 
+ extern int FGb_int_internal_threads(const int tr0);
+ extern int FGb_internal_threads(const int tr0);
